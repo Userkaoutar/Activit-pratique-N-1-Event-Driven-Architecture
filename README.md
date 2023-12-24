@@ -62,7 +62,9 @@ voila:
 
 
 2. Utilisation de Docker
-Suivez les étapes ci-dessous pour utiliser Docker avec Kafka.
+   
+<img width="928" alt="image" src="https://github.com/Userkaoutar/Activit-pratique-N-1-Event-Driven-Architecture/assets/101696114/18d59b7d-d824-4318-b50f-610d27258b20">
+
 
 2.1 Création du fichier docker-compose.yml
 Créez un fichier docker-compose.yml avec le contenu suivant :
