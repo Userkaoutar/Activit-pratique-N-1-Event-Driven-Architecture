@@ -1,6 +1,7 @@
-![image](https://github.com/Userkaoutar/Activit-pratique-N-1-Event-Driven-Architecture/assets/101696114/3706c6a8-865c-4dec-907e-2c2b3d909544)# Activit-pratique-N-1-Event-Driven-Architecture
+## Activit-pratique-N-1-Event-Driven-Architecture
 ##Installation de Kafka
 ##Téléchargement de Kafka
+
 Pour commencer, téléchargez la dernière version de Kafka depuis le site officiel de Kafka. Dans ce TP, nous utiliserons la version 2.12-2.3.0. Une fois l'archive téléchargée, décompressez-la et accédez au dossier créé.
 
 Lancement de Kafka et Zookeeper
@@ -35,7 +36,7 @@ Utilisez le kafka-console-producer pour envoyer des messages :
 
 ```bash
 
-start bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
+start bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic kaoutar-topic
 
 ```
 
@@ -47,7 +48,7 @@ Dans un autre terminal, utilisez le kafka-console-consumer pour recevoir les mes
 
 ```bash
 
-start bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+start bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic kaoutar-topic --from-beginning
 
 
 ```
