@@ -68,29 +68,45 @@ voila:
 
 2.1 Création du fichier docker-compose.yml
 Créez un fichier docker-compose.yml avec le contenu suivant :
-
-yaml
-Copy code
-version: '2'
+```bash
+version: '3'
 services:
   zookeeper:
-    image: wurstmeister/zookeeper:latest
-    ports:
-     - "2181:2181"
-  kafka:
-    image: wurstmeister/kafka:latest
-    ports:
-     - "9092:9092"
-    expose:
-     - "9093"
+    image: confluentinc/cp-zookeeper:7.3.0
+    container_name: zookeeper
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9093,OUTSIDE://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
-      KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
-      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-    volumes:
-     - /var/run/docker.sock:/var/run/docker.sock
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  broker:
+    image: confluentinc/cp-kafka:7.3.0
+    container_name: broker
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+```
+
+Démarrer les conteneurs docker : zookeeper et kafka-broker:
+```bash
+docker-compose up
+
+```
+
+<img width="646" alt="image" src="https://github.com/Userkaoutar/Activit-pratique-N-1-Event-Driven-Architecture/assets/101696114/0ea26528-f1e8-4e97-9e63-5b345306afc0">
+
+
+<img width="666" alt="image" src="https://github.com/Userkaoutar/Activit-pratique-N-1-Event-Driven-Architecture/assets/101696114/4e78dfcf-eec3-446f-8acb-1d8c75bb1437">
+
+
 2.2 Démarrage des conteneurs Docker
 Dans le répertoire contenant le fichier docker-compose.yml, exécutez la commande suivante :
 
@@ -99,6 +115,7 @@ Copy code
 docker-compose up -d
 2.3 Test avec kafka-console-producer et kafka-console-consumer
 Utilisez le kafka-console-producer :
+
 
 bash
 Copy code
