@@ -116,6 +116,8 @@ docker-compose up -d
 2.3 Test avec kafka-console-producer et kafka-console-consumer
 Utilisez le kafka-console-producer :
 
+![Capture d'écran 2023-12-28 160859](https://github.com/Userkaoutar/Activit-pratique-N-1-Event-Driven-Architecture/assets/101696114/2d35b236-d020-472b-a2d0-2d74672a4363)
+
 
 bash
 Copy code
