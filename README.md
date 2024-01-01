@@ -119,31 +119,6 @@ Utilisez le kafka-console-producer :
 ![Capture d'écran 2023-12-28 160859](https://github.com/Userkaoutar/Activit-pratique-N-1-Event-Driven-Architecture/assets/101696114/2d35b236-d020-472b-a2d0-2d74672a4363)
 
 
-bash
-Copy code
-docker exec -it container_id kafka-console-producer.sh --broker-list localhost:9092 --topic votre_topic
-Dans un autre terminal, utilisez le kafka-console-consumer :
-
-bash
-Copy code
-docker exec -it container_id kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic votre_topic --from-beginning
-3. Utilisation de Kafka et Spring Cloud Streams
-En utilisant Kafka et Spring Cloud Streams, nous allons créer différents services.
-
-3.1 Service Producer Kafka via un Rest Controller
-Créez un service qui produit des messages Kafka via un Rest Controller.
-
-3.2 Service Consumer Kafka
-Créez un service qui consomme des messages Kafka.
-
-3.3 Service Supplier Kafka
-Créez un service qui agit en tant que fournisseur de données pour Kafka.
-
-3.4 Service de Data Analytics Real-Time Stream Processing avec Kafka Streams
-Créez un service qui effectue des analyses en temps réel sur le flux de données Kafka en utilisant Kafka Streams.
-
-3.5 Application Web pour Afficher les Résultats du Stream Data Analytics en Temps Réel
-Développez une application web qui affiche les résultats des analyses en temps réel.
 
 Conclusion
 Ce guide couvre les bases de l'utilisation de Kafka localement, avec Docker, et son intégration avec Spring Cloud Streams. Vous pouvez maintenant explorer davantage ces technologies
